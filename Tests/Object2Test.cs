@@ -59,6 +59,7 @@ namespace Template
       //Act
       Object2 savedObject2 = Object2.GetAll()[0];
 
+      Console.WriteLine(testObject2.GetName());
       int result = savedObject2.GetId();
       int testId = testObject2.GetId();
 

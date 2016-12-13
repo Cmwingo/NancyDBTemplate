@@ -78,6 +78,29 @@ namespace Template
         foundObject2.Update(Request.Form["new-description"]);
         return View["success.cshtml"];
       };
+      Get["object1s/update/{id}"] = parameters =>
+      {
+        Object1 foundObject1 = Object1.Find(parameters.id);
+        return View["object1_update.cshtml", foundObject1];
+      };
+      Patch["object1s/update/{id}"] = parameters =>
+      {
+        Object1 foundObject1 = Object1.Find(parameters.id);
+        foundObject1.Update(Request.Form["new-description"]);
+        return View["success.cshtml"];
+      };
+      Delete["object1/delete/{id}"] = parameters =>
+      {
+        Object1 foundObject1 = Object1.Find(parameters.id);
+        foundObject1.Delete();
+        return View["success.cshtml"];
+      };
+      Delete["object2/delete/{id}"] = parameters =>
+      {
+        Object2 foundObject2 = Object2.Find(parameters.id);
+        foundObject2.Delete();
+        return View["success.cshtml"];
+      };
     }
   }
 }

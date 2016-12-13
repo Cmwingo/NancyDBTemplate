@@ -31,5 +31,11 @@
   <button type='submit'>Add</button>
 </form>
 <hr>
+<h4><a href="/object1s/update/@Model["object1"].GetId()">Update this object1</a></h4>
+
+<form action="/object1/delete/@Model["object1"].GetId()" method="post">
+  <input type="hidden" name="_method" value="DELETE">
+  <button type="submit">Delete</button>
+</form>
 
 <p><a class="btn-sm btn-primary" href="/">Return to Main Page</a></p>

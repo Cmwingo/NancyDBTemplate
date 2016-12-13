@@ -111,7 +111,7 @@ namespace Template
       SqlConnection conn = DB.Connection();
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("INSERT INTO object2s (name) OUTPUT INSERTED.id VALUES (@Object2Name)", conn);
+      SqlCommand cmd = new SqlCommand("INSERT INTO object2s (name) OUTPUT INSERTED.id VALUES (@Object2Name);", conn);
 
       SqlParameter nameParam = new SqlParameter();
       nameParam.ParameterName = "@Object2Name";
@@ -183,7 +183,7 @@ namespace Template
       SqlConnection conn = DB.Connection();
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("DELETE FROM object2s WHERE id = @Object2Id; DELETE FROM object1s_object2s WHERE object2_id = @Object2Id", conn);
+      SqlCommand cmd = new SqlCommand("DELETE FROM object2s WHERE id = @Object2Id;", conn);
 
       SqlParameter object2IdParameter = new SqlParameter();
       object2IdParameter.ParameterName = "@Object2Id";

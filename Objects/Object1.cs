@@ -161,6 +161,42 @@ namespace Template
       return foundObject1;
     }
 
+    public void Update(string newName)
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("UPDATE object1s SET name = @NewName OUTPUT INSERTED.name where id = @Object1Id;", conn);
+
+      SqlParameter descParam = new SqlParameter();
+      descParam.ParameterName = "@NewName";
+      descParam.Value = newName;
+
+
+      SqlParameter idParam = new SqlParameter();
+      idParam.ParameterName = "@Object1Id";
+      idParam.Value = this._id;
+
+      cmd.Parameters.Add(descParam);
+      cmd.Parameters.Add(idParam);
+
+      SqlDataReader rdr = cmd.ExecuteReader();
+
+      while (rdr.Read())
+      {
+        this._name = rdr.GetString(0);
+      }
+
+      if (rdr != null)
+      {
+        rdr.Close();
+      }
+      if (conn != null)
+      {
+        conn.Close();
+      }
+    }
+
     public void AddObject2(Object2 newObject2)
     {
       SqlConnection conn = DB.Connection();
